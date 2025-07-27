@@ -43,7 +43,7 @@ export function CreateModal(){
 
 
     return(
-    <div className="modal-overflow">
+    <div className="modal-overlay">
         <div className="modal-body">
           <h2>Cadastre um novo item no Cardapio</h2>
           <form className="input-container">
