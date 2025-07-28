@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFoodDataMutate } from "../../hooks/useFoodDataMutate";
 import type { FoodData } from "../../interface/FoodData";
+import "./modal.css";
 
 interface InputProps{
 
@@ -8,6 +9,11 @@ interface InputProps{
     value: string | number,
     updateValue(value: any) : void
 
+}
+
+interface ModalProps{
+
+    closeModal():void
 }
 
 
@@ -22,12 +28,12 @@ const Input = ({label, value, updateValue}: InputProps) => {
 
 }
 
-export function CreateModal(){
+export function CreateModal({closeModal}:ModalProps){
 
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState("");
-    const{ mutate } = useFoodDataMutate();
+    const{ mutate, isSuccess, isLoading } = useFoodDataMutate();
 
     const submit = () => {
 
@@ -41,6 +47,11 @@ export function CreateModal(){
 
     }
 
+    useEffect(() =>{
+        if(!isSuccess) return
+        closeModal();
+    }, [isSuccess])
+
 
     return(
     <div className="modal-overlay">
@@ -51,7 +62,7 @@ export function CreateModal(){
             <Input label="price" value={price} updateValue={setPrice}/>
             <Input label="image" value={image} updateValue={setImage}/>
           </form>
-          <button onClick={submit} className="btn-secondary">Postar</button>
+          <button onClick={submit} className="btn-secondary">{isLoading ? 'Postando...':'Postar'}</button>
         </div>
     </div>
     )
