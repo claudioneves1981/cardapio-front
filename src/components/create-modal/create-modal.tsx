@@ -33,7 +33,7 @@ export function CreateModal({closeModal}:ModalProps){
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState("");
-    const{ mutate, isSuccess, isLoading } = useFoodDataMutate();
+    const{ mutate, isSuccess, isPending } = useFoodDataMutate();
 
     const submit = () => {
 
@@ -62,7 +62,7 @@ export function CreateModal({closeModal}:ModalProps){
             <Input label="price" value={price} updateValue={setPrice}/>
             <Input label="image" value={image} updateValue={setImage}/>
           </form>
-          <button onClick={submit} className="btn-secondary">{isLoading ? 'Postando...':'Postar'}</button>
+          <button onClick={submit} className="btn-secondary" >{isPending ? 'Postando...':'Postar'}</button>
         </div>
     </div>
     )
