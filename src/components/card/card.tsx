@@ -12,9 +12,14 @@ interface CardProps{
 export function Card({price, title, image} : CardProps){
     return(
     <div className="card">
+        
         <img src ={image}/>
         <h2>{title}</h2>
         <p><b>Valor:</b>{price}</p>
+        <a href="/">adicionar ao carrinho</a>
+        
+        
     </div>
+
     )
 }

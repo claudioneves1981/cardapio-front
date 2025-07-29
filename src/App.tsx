@@ -13,18 +13,20 @@ function App() {
         setIsModalOpen(prev => !prev)
   }
 
+
   return (
     <>
       <div className="container">
         <h1>Cardapio</h1>
         <div className="card-grid">
             { data?.map(foodData => 
-            <Card 
-            price={foodData.price} 
-            title={foodData.title} 
-            image={foodData.image}
-            />
-            )}
+          
+                <Card
+                price={foodData.price}
+                title={foodData.title}
+                image={foodData.image} />
+                
+           )}
         </div>
         {isModalOpen && <CreateModal closeModal={handleOpenModal}/>}
         <button onClick={handleOpenModal}>Novo</button>
