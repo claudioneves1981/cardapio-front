@@ -30,6 +30,7 @@ const Input = ({label, value, updateValue}: InputProps) => {
 
 export function CreateModal({closeModal}:ModalProps){
 
+    const [id, setId] = useState(0);
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState("");
@@ -38,6 +39,7 @@ export function CreateModal({closeModal}:ModalProps){
     const submit = () => {
 
         const foodData: FoodData = {
+            id,
             title,
             price,
             image
@@ -58,6 +60,7 @@ export function CreateModal({closeModal}:ModalProps){
         <div className="modal-body">
           <h2>Cadastre um novo item no Cardapio</h2>
           <form className="input-container">
+            <Input label="id" value={id} updateValue={setId}/>
             <Input label="title" value={title} updateValue={setTitle}/>
             <Input label="price" value={price} updateValue={setPrice}/>
             <Input label="image" value={image} updateValue={setImage}/>

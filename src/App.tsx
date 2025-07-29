@@ -20,11 +20,15 @@ function App() {
         <h1>Cardapio</h1>
         <div className="card-grid">
             { data?.map(foodData => 
-          
+           
+           <>
                 <Card
+                id={foodData.id}
                 price={foodData.price}
                 title={foodData.title}
                 image={foodData.image} />
+
+                </>
                 
            )}
         </div>

@@ -9,8 +9,21 @@
     padding: 0;
 }
 
+
 .card img{
     border-radius: 8px 8px 0 0;
     width: 250px;
     height: 200px;
+}
+
+.card .button-add{
+   
+    background-color:#0275d8;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    bottom: 16px;
+    right: 24px;
+    transition: all 0.1s linear 0.1s;
+
 }
