@@ -40,7 +40,8 @@ export function CreateModal({closeModal}:ModalProps){
         const foodData: FoodData = {
             title,
             price,
-            image
+            image,
+            id: 0
         }
 
         mutate(foodData)

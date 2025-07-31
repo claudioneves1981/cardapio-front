@@ -2,8 +2,25 @@
 import { useState } from 'react';
 import { CreateModal } from '../create-modal/create-modal';
 import { useFoodData } from '../../hooks/useFoodData';
+import type { FoodData } from '../../interface/FoodData';
 
-export function ProductList(allFoodData: any, setAllFoodData: (arg0: any[]) => void, total: number, setTotal: (arg0: any) => void, countFoodData: number, setCountFoodData: (arg0: any) => void){
+import "../card/card.css";
+
+interface ProductListProps{
+
+  allFoodData: any[],
+  setAllFoodData(value: any[]): void,
+  total: number,
+  setTotal(value: number): void,
+  countFoodData:number,
+  setCountFoodData(value: number): void,
+
+
+}
+
+
+
+export function ProductList({allFoodData, setAllFoodData, total, setTotal, countFoodData, setCountFoodData}: ProductListProps){
 
     const { data } = useFoodData();
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,13 +29,11 @@ export function ProductList(allFoodData: any, setAllFoodData: (arg0: any[]) => v
           setIsModalOpen(prev => !prev)
     }
 
-    const onAddFoodData = (foodData: { id: any; title:string; price: number} , quantity: number) => {
+    const onAddFoodData = (foodData: FoodData, quantity: number) => {
 
-
-
-        if(allFoodData.find((item: { id: any; quantity: number})  => item.id === foodData.id)){
+        if(allFoodData.find(item => item.id === foodData.id)){
   
-           const listFoodData = allFoodData.map((item: { id: any;})  => item.id === foodData.id ? {...item, quantity: quantity + 1} : item
+           const listFoodData = allFoodData.map(item  => item.id === foodData.id ? {...item, quantity: quantity + 1} : item
               );
           setTotal(total + foodData.price * quantity);
           setCountFoodData(countFoodData + quantity);
@@ -35,10 +50,13 @@ export function ProductList(allFoodData: any, setAllFoodData: (arg0: any[]) => v
 
   return (
 
+
 <>
     <div className="card">
 
-        {data?.map(product  => (
+        {
+        
+        data?.map(product  => (
 
         <div className = "item" key = {product.id}>
         
