@@ -14,6 +14,7 @@ function App() {
   return (
     
     <>
+    
     <Header
     allFoodData={allFoodData}
     setAllFoodData={setAllFoodData}
@@ -22,6 +23,8 @@ function App() {
     countFoodData={countFoodData}
     setCountFoodData={setCountFoodData}/>
 
+ <div className = "container">
+  
       <ProductList
         allFoodData={allFoodData}
         setAllFoodData={setAllFoodData}
@@ -29,6 +32,8 @@ function App() {
         setTotal={setTotal}
         countFoodData={countFoodData}
         setCountFoodData={setCountFoodData}/>
+  
+  </div>
   </>
   )
 }

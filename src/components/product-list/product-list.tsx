@@ -52,13 +52,13 @@ export function ProductList({allFoodData, setAllFoodData, total, setTotal, count
 
 
 <>
-    <div className="card">
+<div className = "card-grid">
 
         {
         
         data?.map(product  => (
 
-        <div className = "item" key = {product.id}>
+        <div className = "card" key = {product.id}>
         
         <img src ={product.image}/>
         <h2>{product.title}</h2>
@@ -71,12 +71,15 @@ export function ProductList({allFoodData, setAllFoodData, total, setTotal, count
         ))}
         
         
-
-    </div>
+</div>
+ 
+   
     <div>
         {isModalOpen && <CreateModal closeModal={handleOpenModal}/>}
         <button onClick={handleOpenModal}>Novo</button>
     </div>
+   
+    
     </>
 
   );

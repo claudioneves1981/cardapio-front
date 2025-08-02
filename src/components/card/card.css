@@ -27,3 +27,11 @@
     transition: all 0.1s linear 0.1s;
 
 }
+
+.card-grid{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+}
+
